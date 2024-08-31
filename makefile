@@ -6,3 +6,11 @@ build:
 
 run: build
 	./dist/${BINARY_NAME}
+
+quick:
+	git add . && git commit -m "No message"
+	git push
+
+push:
+	git add . && git commit -m "${m}"
+	git push
