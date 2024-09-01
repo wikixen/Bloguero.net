@@ -8,6 +8,11 @@ import (
 	"gorm.io/gorm"
 )
 
+type User struct{
+	gorm.Model
+	Username string
+}
+
 type Blogs struct {
 	gorm.Model
 	Title    string `gorm:"unique;not null;type:varchar(100)"`
