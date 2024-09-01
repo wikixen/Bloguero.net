@@ -10,9 +10,9 @@ import (
 
 type Blogs struct {
 	gorm.Model
-	Title    string
+	Title    string `gorm:"unique;not null;type:varchar(100)"`
 	Author   string
-	Content  string
+	Content  string `gorm:"not null"`
 	Likes    uint
 	Dislikes uint
 }
@@ -27,6 +27,8 @@ func main() {
 	app.HandleFunc("POST /", CreateBlog)
 	app.HandleFunc("GET /", GetBlogs)
 	app.HandleFunc("GET /{id}", GetABlog)
+	app.HandleFunc("PATCH /{id}", EditABlog)
+	app.HandleFunc("DELETE /{id}", DeleteABlog)
 
 	http.ListenAndServe(":8080", app)
 }
@@ -41,12 +43,6 @@ func CreateBlog(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if newBlog.Title == "" {
-		http.Error(w, "Title can't be empty", http.StatusBadRequest)
-	} else if newBlog.Content == "" {
-		http.Error(w, "Content can't be empty", http.StatusBadRequest)
-	}
-
 	if res := db.Create(newBlog); res.Error != nil {
 		http.Error(w, res.Error.Error(), http.StatusInternalServerError)
 		return
@@ -56,6 +52,7 @@ func CreateBlog(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// GetBlogs gets all blogs in an array
 func GetBlogs(w http.ResponseWriter, r *http.Request) {
 	var allBlogs []Blogs
 	if res := db.Find(&allBlogs); res.Error != nil {
@@ -71,8 +68,34 @@ func GetBlogs(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// GetABlog gets a single blog by ID
 func GetABlog(w http.ResponseWriter, r *http.Request) {
 	var blog Blogs
+	id := r.PathValue("id")
+	if res := db.First(&blog, "id = ?", id); res.Error != nil {
+		http.Error(w, res.Error.Error(), http.StatusBadRequest)
+	} else {
+		w.WriteHeader(http.StatusOK)
+		w.Header().Set("Content-Type", "application/json")
+		j, err := json.Marshal(blog)
+		if err != nil {
+			http.Error(w, res.Error.Error(), http.StatusInternalServerError)
+		}
+		w.Write(j)
+	}
+}
+
+// EditABlog allows the editing of blogs
+func EditABlog(w http.ResponseWriter, r *http.Request) {
+	// Grabs JSON from r
+	var blog Blogs
+	err := json.NewDecoder(r.Body).Decode(&blog)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	// Search DB using GORM
 	id := r.PathValue("id")
 	if res := db.First(&blog, "id = ?", id); res.Error != nil {
 		http.Error(w, res.Error.Error(), http.StatusInternalServerError)
@@ -84,5 +107,24 @@ func GetABlog(w http.ResponseWriter, r *http.Request) {
 			http.Error(w, res.Error.Error(), http.StatusInternalServerError)
 		}
 		w.Write(j)
+	}
+}
+
+// DeleteABlog allows the deletion of blogs
+func DeleteABlog(w http.ResponseWriter, r *http.Request) {
+	// Grabs JSON from r
+	var blog Blogs
+	err := json.NewDecoder(r.Body).Decode(&blog)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	// Search DB using GORM
+	id := r.PathValue("id")
+	if res := db.Delete(&blog, "id = ?", id); res.Error != nil {
+		http.Error(w, res.Error.Error(), http.StatusInternalServerError)
+	} else {
+		w.WriteHeader(http.StatusOK)
 	}
 }
