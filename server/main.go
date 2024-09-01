@@ -17,7 +17,7 @@ type Blogs struct {
 	Dislikes uint
 }
 
-var db, err = gorm.Open(sqlite.Open("blogs.db"), &gorm.Config{})
+var db, _ = gorm.Open(sqlite.Open("blogs.db"), &gorm.Config{})
 
 func main() {
 	db.AutoMigrate(&Blogs{})
@@ -43,7 +43,7 @@ func CreateBlog(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if res := db.Create(newBlog); res.Error != nil {
+	if res := db.Create(&newBlog); res.Error != nil {
 		http.Error(w, res.Error.Error(), http.StatusInternalServerError)
 		return
 	} else {
@@ -55,8 +55,10 @@ func CreateBlog(w http.ResponseWriter, r *http.Request) {
 // GetBlogs gets all blogs in an array
 func GetBlogs(w http.ResponseWriter, r *http.Request) {
 	var allBlogs []Blogs
+
 	if res := db.Find(&allBlogs); res.Error != nil {
 		http.Error(w, res.Error.Error(), http.StatusInternalServerError)
+		return
 	} else {
 		w.WriteHeader(http.StatusOK)
 		w.Header().Set("Content-Type", "application/json")
@@ -65,6 +67,7 @@ func GetBlogs(w http.ResponseWriter, r *http.Request) {
 			http.Error(w, res.Error.Error(), http.StatusInternalServerError)
 		}
 		w.Write(j)
+		return
 	}
 }
 
@@ -72,6 +75,7 @@ func GetBlogs(w http.ResponseWriter, r *http.Request) {
 func GetABlog(w http.ResponseWriter, r *http.Request) {
 	var blog Blogs
 	id := r.PathValue("id")
+
 	if res := db.First(&blog, "id = ?", id); res.Error != nil {
 		http.Error(w, res.Error.Error(), http.StatusBadRequest)
 	} else {
@@ -82,6 +86,8 @@ func GetABlog(w http.ResponseWriter, r *http.Request) {
 			http.Error(w, res.Error.Error(), http.StatusInternalServerError)
 		}
 		w.Write(j)
+
+		return
 	}
 }
 
@@ -89,6 +95,7 @@ func GetABlog(w http.ResponseWriter, r *http.Request) {
 func EditABlog(w http.ResponseWriter, r *http.Request) {
 	// Grabs JSON from r
 	var blog Blogs
+
 	err := json.NewDecoder(r.Body).Decode(&blog)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -97,7 +104,8 @@ func EditABlog(w http.ResponseWriter, r *http.Request) {
 
 	// Search DB using GORM
 	id := r.PathValue("id")
-	if res := db.First(&blog, "id = ?", id); res.Error != nil {
+	if res := db.Where("id = ?", id).Updates(&blog); 
+	res.Error != nil {
 		http.Error(w, res.Error.Error(), http.StatusInternalServerError)
 	} else {
 		w.WriteHeader(http.StatusOK)
@@ -107,6 +115,8 @@ func EditABlog(w http.ResponseWriter, r *http.Request) {
 			http.Error(w, res.Error.Error(), http.StatusInternalServerError)
 		}
 		w.Write(j)
+
+		return
 	}
 }
 
@@ -114,6 +124,7 @@ func EditABlog(w http.ResponseWriter, r *http.Request) {
 func DeleteABlog(w http.ResponseWriter, r *http.Request) {
 	// Grabs JSON from r
 	var blog Blogs
+
 	err := json.NewDecoder(r.Body).Decode(&blog)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -124,7 +135,9 @@ func DeleteABlog(w http.ResponseWriter, r *http.Request) {
 	id := r.PathValue("id")
 	if res := db.Delete(&blog, "id = ?", id); res.Error != nil {
 		http.Error(w, res.Error.Error(), http.StatusInternalServerError)
+		return
 	} else {
 		w.WriteHeader(http.StatusOK)
+		return
 	}
 }
