@@ -1,7 +1,8 @@
 TODO
 - [X] DB
-- [X] Routes
-- [X] Controllers
-- [X] Routes
-- [ ] Make it thread safe??(Look at Flo Woelki's youtube vid if that doesnt make sense) NOT SURE IF NEEDED?
+- [X] Blog Routes
+- [X] Blog Controllers
 - [ ] Separate main into diff files
+
+
+This site will work like a forum so no account creation required
