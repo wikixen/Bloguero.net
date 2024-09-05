@@ -1,20 +1,15 @@
-import { Container, Nav, Navbar, NavDropdown } from "solid-bootstrap";
+import { Container, Navbar} from "solid-bootstrap";
+import { BurgerMenu } from './../assets/burgerMenu.tsx';
+import { SearchIcon } from "../assets/searchIcon.tsx";
 
 export default function Header() {
     return (
-        <main>
-            <Container fluid id="header">
-                <Navbar.Brand>YouBlog</Navbar.Brand>
-                <Navbar.Toggle />
-                <Navbar.Collapse>
-                    <Nav>
-                        <NavDropdown title="Placeholder">
-                            <NavDropdown.Item>Change Username</NavDropdown.Item>
-                            <NavDropdown.Item>Change Username</NavDropdown.Item>
-                        </NavDropdown>
-                    </Nav>
-                </Navbar.Collapse>
-            </Container>
-        </main>
+        <Container fluid class="flex flex-row">
+            <header>
+                <Navbar>
+                    
+                </Navbar>
+            </header>
+        </Container>
     );
 }
