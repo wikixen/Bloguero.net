@@ -2,10 +2,10 @@ BINARY_NAME=blog-app
 .DEFAULT_GOAL := run
 
 build:
-	go build -o ./dist/${BINARY_NAME} main.go
+	go build -o ./scripts/${BINARY_NAME} main.go
 
 run: build
-	./dist/${BINARY_NAME}
+	./scripts/${BINARY_NAME}
 
 quick:
 	git add . && git commit -m "No message"
