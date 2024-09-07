@@ -8,7 +8,7 @@ TODO
 - [ ] Middleware
     - [ ] Make my own auth🙃
     - [ ] Regex for blogs
-- [X] Handler: Make my structs & interfaces for handlers
+- [ ] Handler: Make my structs & interfaces for handlers(https://youtu.be/wttTTFVrQiw?t=423)
     - [ ] Blog Handlers
     - [ ] User Handlers
 - [ ] Figure out where actual DB file should be stored
