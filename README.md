@@ -1,7 +1,7 @@
 https://gist.github.com/ayoubzulfiqar/9f1a34049332711fddd4d4b2bfd46096
 TODO
-- [ ] Configs
-    - [ ] Make dev & prod.yaml files
+- <s>[ ] Configs
+    - [ ] Make dev & prod.yaml files</s>
 - [ ] DB
     - [ ] Blog Table: Need to reevualate the struct
     - [ ] User Table

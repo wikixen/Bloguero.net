@@ -1,0 +1,4 @@
+{
+    "database": "blogs.db",
+    "port": ":8080"
+}
