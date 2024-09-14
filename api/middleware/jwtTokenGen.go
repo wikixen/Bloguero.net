@@ -1,7 +1,7 @@
 package middleware
 
 import (
-	"fmt"
+	"errors"
 	"net/http"
 	"time"
 
@@ -35,12 +35,13 @@ func verifyToken(tokenStr string) error {
 	}
 
 	if !token.Valid {
-		return fmt.Errorf("Invalid token")
+		return errors.New("invalid token")
 	}
 
 	return nil
 }
 
+// AccessHandler insures user has a jwt token while accessing certain routes
 func AccessHandler(next http.Handler)  http.Handler{
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type","application/json")

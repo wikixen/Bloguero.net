@@ -9,7 +9,6 @@ import (
 
 // CreateBlog creates a blog
 func CreateBlog(w http.ResponseWriter, r *http.Request) {
-	dbInit()
 	var newBlog models.Blogs
 
 	err := json.NewDecoder(r.Body).Decode(&newBlog)

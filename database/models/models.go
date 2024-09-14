@@ -6,13 +6,13 @@ import (
 
 type User struct {
 	gorm.Model
-	Username string
+	Username string `gorm:"unique"`
 	Password string
 }
 
 type Blogs struct {
 	gorm.Model
-	Title    string
+	Title    string 
 	Author   string
 	Content  string
 	Likes    uint

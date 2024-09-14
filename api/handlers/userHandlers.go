@@ -57,7 +57,7 @@ func CreateUser(w http.ResponseWriter, r *http.Request) {
 	if len(newUser.Password) < 8 && len(newUser.Password) > 128 {
 		http.Error(w, "Invalid password length", http.StatusBadRequest)
 	} else {
-		newUser.Password, _ = middleware.HashPW(newUser.Password)
+		newUser.Password, _ = HashPW(newUser.Password)
 	
 		if res := db.Create(&newUser); res.Error != nil {
 			http.Error(w, res.Error.Error(), http.StatusInternalServerError)
@@ -75,7 +75,7 @@ func EditUser(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
 
-	user.Password, _ = middleware.HashPW(user.Password)
+	user.Password, _ = HashPW(user.Password)
 
 	id := r.PathValue("id")
 	if res := db.Where("id = ?", id).Updates(&user); res.Error != nil {
@@ -124,7 +124,7 @@ func LoginUser(w http.ResponseWriter, r *http.Request) {
 	if res := db.First(&user, "id = ?", id); res.Error != nil {
 		http.Error(w, res.Error.Error(), http.StatusBadRequest)
 	} else {
-		match, err := middleware.AuthenticatePW(input.Password, user.Password)
+		match, err := AuthenticatePW(input.Password, user.Password)
 		if err != nil {
 			log.Fatal(err)
 			// http.Error(w, "Incorrect username or password provided",http.StatusBadRequest)

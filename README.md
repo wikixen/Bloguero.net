@@ -1,15 +1,6 @@
-https://gist.github.com/ayoubzulfiqar/9f1a34049332711fddd4d4b2bfd46096
-TODO
-- <s>[ ] Configs
-    - [ ] Make dev & prod.yaml files</s>
-- [ ] DB
-    - [ ] Blog Table: Need to reevualate the struct
-    - [ ] User Table
-- [ ] Middleware
-    - [ ] Make my own auth🙃
-    - [ ] Regex for blogs
-- [ ] Handler: Make my structs & interfaces for handlers(https://youtu.be/wttTTFVrQiw?t=423)
-    - [ ] Blog Handlers
-    - [ ] User Handlers
-- [ ] Figure out where actual DB file should be stored
-- [ ] Templates: OPTIONAL as making own auth could be enough as a project
+# Blog REST API
+The purpose of this repo is to show my abilty to make a REST API using as much of the Go standard library as I possibly could. The API allows for the creation of user accounts, as well as the creation of blogs by each user. Since this is a proof of concept it uses an sqlite database as it was the easiest database to set up. There were some external libraries that I had to use; Specifically [JWT](https://github.com/golang-jwt/jwt), to implement JWT token authentication, & [GORM](https://github.com/go-gorm/gorm) to interact with the database. Argon2id was used to hash passwords as it is the best hashing algorithm as the time of this repo's development(2024)
+This not only shows my ability to make a REST API but my ability to do so with the stdlib of Go.
+
+# Future Updates
+The only future update that I would add is a frontend which I would implement with either templates or a front-end framework like React or Svelte. After which it could be hosted.

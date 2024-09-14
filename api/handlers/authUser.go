@@ -1,4 +1,4 @@
-package middleware
+package handlers
 
 import (
 	"crypto/subtle"
@@ -9,6 +9,7 @@ import (
 
 	"golang.org/x/crypto/argon2"
 )
+
 
 func AuthenticatePW(pw, encHash string) (match bool, err error) {
 	p, salt, hash, err := decHash(encHash)
