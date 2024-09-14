@@ -9,15 +9,13 @@ import (
 type Config struct {
 	Database string
 	Port string
+	Secret string
 }
 
 func GetConfig()  Config{
-	config := Config{
-		Database: "blogs.db",
-		Port: ":8080",
-	}
+	var config Config
 
-	configFile, err := os.Open("../cmd"+"./config/jsonConfig.go")
+	configFile, err := os.Open("config.json")
 	if err != nil {
 		log.Fatalln("",err)
 	}

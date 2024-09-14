@@ -46,8 +46,8 @@ func GetBlogs(w http.ResponseWriter, r *http.Request) {
 // GetABlog gets a single blog by ID
 func GetABlog(w http.ResponseWriter, r *http.Request) {
 	var blog models.Blogs
+	
 	id := r.PathValue("id")
-
 	if res := db.First(&blog, "id = ?", id); res.Error != nil {
 		http.Error(w, res.Error.Error(), http.StatusBadRequest)
 	} else {
@@ -64,7 +64,7 @@ func GetABlog(w http.ResponseWriter, r *http.Request) {
 }
 
 // EditABlog allows the editing of blogs
-func EditABlog(w http.ResponseWriter, r *http.Request) {
+func EditBlog(w http.ResponseWriter, r *http.Request) {
 	// Grabs JSON from r
 	var blog models.Blogs
 
@@ -92,7 +92,7 @@ func EditABlog(w http.ResponseWriter, r *http.Request) {
 }
 
 // DeleteABlog allows the deletion of blogs
-func DeleteABlog(w http.ResponseWriter, r *http.Request) {
+func DeleteBlog(w http.ResponseWriter, r *http.Request) {
 	// Grabs JSON from r
 	var blog models.Blogs
 
