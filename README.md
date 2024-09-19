@@ -4,6 +4,6 @@ The purpose of this repo is to show my abilty to make a REST API using as much o
 This not only shows my ability to make a REST API but my ability to do so with the stdlib of Go.
 
 
-If you wish to download this code to test it or build upon it note that it uses a config.json file to store all enviroment variable; You must edit the struct in the configjson.go in the config directory.
+If you wish to download this code to test it or build upon it note that it uses a config.json file to store all enviroment variable(Which is stored in the top-level directory); You must edit the struct in the configJson.go in the config directory(i.e. any new env variables not already in the struct must be added).
 # Future Updates
 The only future update that I would add is a frontend which I would implement with either templates or a front-end framework like React or Svelte. After which it could be hosted.
