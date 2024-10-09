@@ -1,7 +1,7 @@
 <script lang="ts">
     import { redirect } from "@sveltejs/kit";
-	import ChangePw from "./changePW.svelte";
     import ChangeUs from "./changeUS.svelte";
+    import ChangePw from "./changePW.svelte";
     
     const onSubmit = () => {
     	redirect

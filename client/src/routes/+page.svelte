@@ -1,13 +1,10 @@
-<!--
-
--->
 <script lang="ts">
 	import '@fontsource/ibm-plex-mono/300.css';
 	import '@fontsource/ibm-plex-mono/500.css';
 	import '@fontsource/ibm-plex-mono/600.css';
 	import sampleData from '$lib/Data/sampleData.json';
 	import type { BlogType } from '$lib/interfaces';
-	import BlogCard from '$lib/components/blogCard.svelte';
+	import BlogCard from '$lib/components/home/blogCard.svelte';
 
 	
 	const data: BlogType[] = sampleData;

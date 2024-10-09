@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Dialog from "./dialog.svelte";
+    import Dialog from "../dialog.svelte";
 	
 	let dialog: HTMLDialogElement;
 	

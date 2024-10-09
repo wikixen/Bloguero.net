@@ -1,10 +1,8 @@
 <script lang="ts">
 	import SearchIcon from '$lib/icons/searchIcon.svelte'
 	import AddIcon from '$lib/icons/addIcon.svelte'
-    import Dialog from '$lib/components/dialog.svelte';
-    import AuthForm from '$lib/components/authForm.svelte';
 	import SettingsIcon from '$lib/icons/settingsIcon.svelte'
-    import SettingsDialog from '$lib/components/settingsDialog.svelte';
+    import LoginBtn from '$lib/components/auth/loginBtn.svelte';
 	
 	let dialog: HTMLDialogElement;
 	let token = true;
@@ -19,21 +17,11 @@
 	<div />
 	<section class="h-buttons">
 			<SearchIcon/>
-		<AddIcon />
 		{#if token !== true}
-			<button class="login-btn" on:click={() => dialog.showModal()}>
-				Log in
-			</button>
-			<Dialog bind:dialog >
-				<AuthForm />
-			</Dialog>
+			<LoginBtn />
 		{:else}
-			<button class="login-btn" on:click={() => dialog.showModal()}>
-				<SettingsIcon />
-			</button>
-			<Dialog bind:dialog >
-				<SettingsDialog />
-			</Dialog>
+			<AddIcon />
+			<SettingsIcon />
 		{/if}
 	</section>
 	<div />
@@ -63,10 +51,5 @@
 	.h-buttons{
 		display: flex;
 		column-gap: .5rem;
-	}
-	.login-btn{
-		font-size: 1.5rem;
-		padding: .1rem 1.5rem;
-		border-radius: .5rem;
 	}
 </style>
