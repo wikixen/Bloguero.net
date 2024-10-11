@@ -1,15 +1,13 @@
 <script lang="ts">
 	import DislikeIcon from "$lib/icons/dislikeIcon.svelte";
 	import LikeIcon from "$lib/icons/likeIcon.svelte";
-	import { onMount } from "svelte";
 	
-	export let title: string, author: string, content: string, likes: number, dislikes: number;
+	export let author: string, content: string, likes: number, dislikes: number;
 	
 	let contentLen = 300;
 </script>
 
-<article class="b-card">
-	<h1 class="b-title">{title}</h1>	
+<article class="b-card">	
 	<a href="/{author}"class="b-author">{author}</a>
 	{#if content.length > contentLen}
 		<p class="b-content">{content.slice(0,300)+"..."}

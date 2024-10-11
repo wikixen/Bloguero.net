@@ -12,7 +12,6 @@ type User struct {
 
 type Blogs struct {
 	gorm.Model
-	Title    string 
 	Author   string
 	Content  string
 	Likes    uint

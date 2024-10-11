@@ -1,7 +1,9 @@
-export const charLimit = 2000;
+export type Token = {
+	token: string;
+	username: string;
+}
 
 export type BlogType = {
-	title: string;
 	author: string;
 	content: string;
 	likes: number | 0;
