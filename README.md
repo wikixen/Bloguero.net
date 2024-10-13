@@ -11,5 +11,7 @@ If you wish to download this code to test it or build upon it note that it uses 
 - [ ] Finish account page & route
 - [ ] [Add api logic to all buttons & pages (Look at server handlers to see the routes)](https://learn.svelte.dev/tutorial/other-handlers)
 - [ ] Implement infinite scroll on all blogs page & single blog page
+    - [True Infinite scroll](https://svelte.dev/repl/aacd1a2d8eb14bb19e5cb3b0ad20fdbe?version=3.32.3)
+    - [Version which uses button click](https://svelte.dev/repl/5823b6e8a30447c59ce5b770f8a84593?version=3.31.2)
 - [ ] Refactor & Clean Up code/directory structure
 - [ ] ...
