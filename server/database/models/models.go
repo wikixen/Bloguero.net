@@ -16,4 +16,5 @@ type Blogs struct {
 	Content  string
 	Likes    uint
 	Dislikes uint
+	Replies  []Blogs
 }

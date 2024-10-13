@@ -5,5 +5,9 @@ This not only shows my ability to make a REST API but my ability to do so with t
 
 
 If you wish to download this code to test it or build upon it note that it uses a config.json file to store all enviroment variable(Which is stored in the top-level directory); You must edit the struct in the configJson.go in the config directory(i.e. any new env variables not already in the struct must be added).
-# Future Updates
-The only future update that I would add is a frontend which I would implement with either templates or a front-end framework like React or Svelte. After which it could be hosted.
+# TODO
+- [ ] Finish single post page design(Under [id] folder)
+    - [ ] Place a button to view post on each blog card
+- [ ] Finish account page & route
+- [ ] Add api logic to all buttons & pages (Look at server handlers to see)
+- [ ] ...

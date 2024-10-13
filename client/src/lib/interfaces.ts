@@ -8,5 +8,6 @@ export type BlogType = {
 	content: string;
 	likes: number | 0;
 	dislikes: number | 0;
+	replies: BlogType[];
 }
 

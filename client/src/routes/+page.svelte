@@ -15,7 +15,12 @@
 	<div>
 		<section class="blogs">
 			{#each data as dat}
-				<BlogCard {...dat}/>
+				<BlogCard 
+					author={dat.author}
+					content={dat.content}
+					likes={dat.likes}
+					dislikes={dat.dislikes}
+				/>
 			{/each}
 		</section>
 	</div>
