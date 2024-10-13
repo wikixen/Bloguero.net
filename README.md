@@ -9,5 +9,7 @@ If you wish to download this code to test it or build upon it note that it uses 
 - [ ] Finish single post page design(Under [id] folder)
     - [ ] Place a button to view post on each blog card
 - [ ] Finish account page & route
-- [ ] Add api logic to all buttons & pages (Look at server handlers to see)
+- [ ] [Add api logic to all buttons & pages (Look at server handlers to see the routes)](https://learn.svelte.dev/tutorial/other-handlers)
+- [ ] Implement infinite scroll on all blogs page & single blog page
+- [ ] Refactor & Clean Up code/directory structure
 - [ ] ...
