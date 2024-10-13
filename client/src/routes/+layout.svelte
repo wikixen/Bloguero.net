@@ -12,7 +12,7 @@
 <header>
 	<div />
 	<section>
-		<a class="h-title" href="/">YouBlog</a>	
+		<a class="h-title" href="/">Bloguero</a>	
 	</section>
 	<div />
 	<section class="h-buttons">
