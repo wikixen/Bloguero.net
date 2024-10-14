@@ -1,6 +1,6 @@
 ![Bloguero Logo](./Logo.png)
 <h1 style="text-align:center;">Bloguero</h1>
-This repo holds the source code for *Bloguero.net*, an open source site that allows users to posts short posts called blogs.
+This repo holds the source code for <em>Bloguero.net</em>, an open source site that allows users to posts short posts called blogs.
 
 
 <h2 style="text-align:center;">Nerd Stuff</h2>
