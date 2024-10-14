@@ -1,11 +1,14 @@
-# Blog REST API
-The purpose of this repo is to show my abilty to make a REST API using as much of the Go standard library as I possibly could. The API allows for the creation of user accounts, as well as the creation of blogs by each user. Since this is a proof of concept it uses an sqlite database as it was the easiest database to set up. There were some external libraries that I had to use; Specifically [JWT](https://github.com/golang-jwt/jwt), to implement JWT token authentication, & [GORM](https://github.com/go-gorm/gorm) to interact with the database. Argon2id was used to hash passwords as it is the best hashing algorithm as the time of this repo's development(2024)
+![Bloguero Logo](./Logo.png)
+<h1 style="text-align:center;">Bloguero</h1>
+This repo holds the source code for *Bloguero.net*, an open source site that allows users to posts short posts called blogs.
 
-This not only shows my ability to make a REST API but my ability to do so with the stdlib of Go.
 
+<h2 style="text-align:center;">Nerd Stuff</h2>
+Backend was made with Go, with the majority of code made with the standard library; [GORM](https://github.com/go-gorm/gorm) & the [Go JWT package](https://github.com/golang-jwt/jwt). The frontend was made with Sveltekit
 
 If you wish to download this code to test it or build upon it note that it uses a config.json file to store all enviroment variable(Which is stored in the top-level directory); You must edit the struct in the configJson.go in the config directory(i.e. any new env variables not already in the struct must be added).
-# TODO
+
+# Current TODOs
 - [ ] Finish single post page design(Under [id] folder)
     - [ ] Place a button to view post on each blog card
 - [ ] Finish account page & route
